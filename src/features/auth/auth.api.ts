@@ -3,7 +3,6 @@ import {
   AddedUser,
   LoginArgs,
   RegisterArgs,
-  RegisterResponseType,
   User,
 } from "@/features/auth/auth.types"
 

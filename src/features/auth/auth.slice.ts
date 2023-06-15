@@ -1,14 +1,15 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { authApi } from "@/features/auth/auth.api"
-import { LoginArgs, RegisterArgs, User } from "@/features/auth/auth.types"
+import { LoginArgs, RegisterArgs, UserType } from "@/features/auth/auth.types"
+import { createAppAsyncThunk } from "@/common/utils/create-app-async-thunk"
 
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    user: null as User | null,
+    user: null as UserType | null,
   },
   reducers: {
-    setUser: (state, action: PayloadAction<{ user: User }>) => {
+    setUser: (state, action: PayloadAction<{ user: UserType }>) => {
       state.user = action.payload.user
     },
   },
@@ -21,9 +22,9 @@ const authSlice = createSlice({
   },
 })
 
-const register = createAsyncThunk(
+const register = createAppAsyncThunk<any, RegisterArgs>(
   "auth/register",
-  async (arg: RegisterArgs) => {
+  async (arg) => {
     try {
       const res = await authApi.register(arg)
       console.log(res)
@@ -31,13 +32,15 @@ const register = createAsyncThunk(
   },
 )
 
-const login = createAsyncThunk(
+const login = createAppAsyncThunk<{ user: UserType }, LoginArgs>(
   "auth/login",
-  async (arg: LoginArgs, thunkAPI) => {
+  async (arg, thunkAPI) => {
     try {
       const res = await authApi.login(arg)
       return { user: res.data }
-    } catch (e) {}
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e)
+    }
   },
 )
 

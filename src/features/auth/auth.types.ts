@@ -1,4 +1,4 @@
-export type User = {
+export type UserType = {
   _id: string
   email: string
   rememberMe: boolean
@@ -13,11 +13,11 @@ export type User = {
   __v: number
 }
 
-export type LoginArgs = Pick<User, "email" | "rememberMe"> & PasswordToPick
-export type AddedUser = Omit<User, "token | tokenDeathTime">
+export type LoginArgs = Pick<UserType, "email" | "rememberMe"> & PasswordToPick
+export type AddedUser = Omit<UserType, "token | tokenDeathTime">
 
-export type RegisterArgs = Pick<User, "email" & PasswordToPick>
-export type PartialUser = Partial<User>
+export type RegisterArgs = Pick<UserType, "email" & PasswordToPick>
+export type PartialUser = Partial<UserType>
 export type RegisterResponseType = {
   addedUser: AddedUser
 }
