@@ -1,5 +1,5 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
-import type { RootState, AppDispatch } from "./store"
+import { AppDispatch, RootState } from "@/app/store"
 
 // Use throughout your auth instead of plain `useDispatch` and `useSelector`
 export const useAppDispatch: () => AppDispatch = useDispatch

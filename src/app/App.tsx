@@ -1,11 +1,9 @@
-import logo from "src/logo.svg"
 import { Counter } from "@/features/counter/Counter"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { Provider } from "react-redux"
 import { store } from "@/app/store"
-import { useAppDispatch, useAppSelector } from "@/app/hooks"
+import { useAppDispatch, useAppSelector } from "@/common/hooks/hooks"
 import { useEffect } from "react"
-import { authThunks } from "@/features/auth/auth.slice"
 import { appActions } from "@/features/app/app.slice"
 
 export const Test = () => {

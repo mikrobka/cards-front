@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { authApi } from "@/features/auth/auth.api"
 import { LoginArgs, RegisterArgs, UserType } from "@/features/auth/auth.types"
-import { createAppAsyncThunk } from "@/common/utils/create-app-async-thunk"
+import { createAppAsyncThunk } from "@/common"
 
 const authSlice = createSlice({
   name: "auth",
