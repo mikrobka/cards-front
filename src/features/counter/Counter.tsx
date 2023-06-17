@@ -1,5 +1,4 @@
 import { useState } from "react"
-
 import { useAppSelector, useAppDispatch } from "@/common/hooks/hooks"
 import {
   decrement,
@@ -10,7 +9,7 @@ import {
   selectCount,
 } from "./counterSlice"
 import styles from "./Counter.module.css"
-import { authThunks } from "@/features/auth/auth.slice"
+import { Button } from "@/features/components/ui/button"
 
 export function Counter() {
   const count = useAppSelector(selectCount)
@@ -22,19 +21,10 @@ export function Counter() {
   return (
     <div>
       <div className={styles.row}>
-        <button
-          onClick={() =>
-            dispatch(
-              authThunks.login({
-                email: "mikrobka231@gmail.com",
-                password: "mikrobka1",
-                rememberMe: true,
-              }),
-            )
-          }
-        >
-          login
-        </button>
+        <Button size="lg" variant="secondary">
+          Button
+        </Button>
+
         <button
           className={styles.button}
           aria-label="Decrement value"
