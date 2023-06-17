@@ -7,18 +7,20 @@ const authSlice = createSlice({
   name: "auth",
   initialState: {
     user: null as UserType | null,
+    isAuth: false,
   },
-  reducers: {
-    setUser: (state, action: PayloadAction<{ user: UserType }>) => {
-      state.user = action.payload.user
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     builder.addCase(login.fulfilled, (state, action) => {
       if (action.payload?.user) {
         state.user = action.payload.user
+        state.isAuth = true
       }
-    })
+    }),
+      builder.addCase(login.rejected, (state, action) => {
+        console.error(action.error)
+      })
   },
 })
 

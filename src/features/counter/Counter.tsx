@@ -9,7 +9,7 @@ import {
   selectCount,
 } from "./counterSlice"
 import styles from "./Counter.module.css"
-import { Button } from "@/features/components/ui/button"
+import { Button } from "@/features/components/ui/button/button"
 
 export function Counter() {
   const count = useAppSelector(selectCount)

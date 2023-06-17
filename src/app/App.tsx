@@ -5,6 +5,7 @@ import { store } from "@/app/store"
 import { useAppDispatch, useAppSelector } from "@/common/hooks/hooks"
 import { useEffect } from "react"
 import { appActions } from "@/features/app/app.slice"
+import { Login } from "@/features/auth/login/login"
 
 export const Test = () => {
   const isLoading = useAppSelector((state) => state.app.isLoading)
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <div>Login</div>,
+    element: <Login />,
   },
   {
     path: "/register",
