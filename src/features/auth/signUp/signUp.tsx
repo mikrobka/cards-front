@@ -59,7 +59,7 @@ export function SignUp() {
     )
       .unwrap()
       .then(() => {
-        navigate("/profile")
+        navigate("/login")
       })
   }
 

@@ -21,6 +21,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useAppDispatch } from "@/common"
 import { authThunks } from "@/features/auth/auth.slice"
 import { useNavigate } from "react-router-dom"
+import { appActions } from "@/features/app/app.slice"
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -48,6 +49,7 @@ export function Login() {
     dispatch(authThunks.login(values))
       .unwrap()
       .then(() => {
+        dispatch(appActions.setIsAppInitialized({ isAppInitialized: true }))
         navigate("/profile")
       })
   }

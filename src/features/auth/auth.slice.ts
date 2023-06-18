@@ -60,6 +60,17 @@ const login = createAppAsyncThunk<{ user: UserType }, LoginArgs>(
   },
 )
 
+const logout = createAppAsyncThunk("auth/login", async (arg, thunkAPI) => {
+  try {
+    const res = await authApi.logout()
+    {
+      console.log(res)
+    }
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e)
+  }
+})
+
 export const authReducer = authSlice.reducer
 export const authActions = authSlice.actions
-export const authThunks = { register, login }
+export const authThunks = { register, login, logout }

@@ -17,6 +17,13 @@ const appSlice = createSlice({
     setIsLoading: (state, action: PayloadAction<{ isLoading: boolean }>) => {
       state.isLoading = action.payload.isLoading
     },
+    setIsAppInitialized: (
+      state,
+      action: PayloadAction<{ isAppInitialized: boolean }>,
+    ) => {
+      state.isAppInitialized = action.payload.isAppInitialized
+    },
+    extraReducers: (builder) => {},
   },
 })
 

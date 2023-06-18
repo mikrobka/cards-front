@@ -8,6 +8,7 @@ import { appActions } from "@/features/app/app.slice"
 import { Login } from "@/features/auth/login/login"
 import { Layout } from "@/app/layout/layout"
 import { SignUp } from "@/features/auth/signUp/signUp"
+import { Profile } from "@/features/profile/profile"
 
 export const Test = () => {
   const isLoading = useAppSelector((state) => state.app.isLoading)
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/profile",
-    element: <div>Profile</div>,
+    element: <Profile />,
   },
   {
     path: "/packs",
