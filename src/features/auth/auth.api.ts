@@ -3,7 +3,7 @@ import {
   AddedUser,
   LoginArgs,
   RegisterArgs,
-  User,
+  UserType,
 } from "@/features/auth/auth.types"
 
 export const authApi = {
@@ -11,6 +11,6 @@ export const authApi = {
     return AuthInstance.post<AddedUser>("/register", params)
   },
   login: (params: LoginArgs) => {
-    return AuthInstance.post<User>("/login", params)
+    return AuthInstance.post<UserType>("/login", params)
   },
 }

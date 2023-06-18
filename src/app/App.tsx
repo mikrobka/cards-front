@@ -7,6 +7,7 @@ import { useEffect } from "react"
 import { appActions } from "@/features/app/app.slice"
 import { Login } from "@/features/auth/login/login"
 import { Layout } from "@/app/layout/layout"
+import { SignUp } from "@/features/auth/signUp/signUp"
 
 export const Test = () => {
   const isLoading = useAppSelector((state) => state.app.isLoading)
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/register",
-    element: <div>Register</div>,
+    element: <SignUp />,
   },
   {
     path: "/check-email",

@@ -13,12 +13,14 @@ import {
   FormLabel,
   FormMessage,
   Input,
+  Label,
 } from "@/features/components/ui"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useAppDispatch } from "@/common"
 import { authThunks } from "@/features/auth/auth.slice"
+import { useNavigate } from "react-router-dom"
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -30,6 +32,7 @@ const formSchema = z.object({
 
 export function Login() {
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -43,6 +46,10 @@ export function Login() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values)
     dispatch(authThunks.login(values))
+      .unwrap()
+      .then(() => {
+        navigate("/profile")
+      })
   }
 
   return (
@@ -104,8 +111,11 @@ export function Login() {
                       />
                     </FormControl>
                     <FormLabel className="ml-4">Remember me</FormLabel>
-                    <Button className="ml-15 " variant="link">
-                      {" "}
+                    <Button
+                      className="ml-15 "
+                      variant="link"
+                      onClick={() => navigate("/forgot-password")}
+                    >
                       Forgot Password?
                     </Button>
                   </CardContent>
@@ -120,15 +130,13 @@ export function Login() {
           </form>
         </Form>
         <div className="flex flex-col justify-center items-center">
-          <Button
-            className="w-[200px] h-[24px] mt-[20px] text-gray-400"
-            variant="link"
-          >
+          <Label className="w-[200px] h-[24px] ml-[40px] mt-[20px] text-gray-400">
             Don't have an account?
-          </Button>
+          </Label>
           <Button
             className="w-[147px] h-[24px] mt-[20px] text-blue-600 underline"
             variant="link"
+            onClick={() => navigate("/register")}
           >
             Sign Up
           </Button>
