@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "@/common/hooks/hooks"
 import { useEffect } from "react"
 import { appActions } from "@/features/app/app.slice"
 import { Login } from "@/features/auth/login/login"
+import { Layout } from "@/app/layout/layout"
 
 export const Test = () => {
   const isLoading = useAppSelector((state) => state.app.isLoading)
@@ -21,7 +22,7 @@ export const Test = () => {
 
   return (
     <div>
-      <Counter />
+      <Login />
     </div>
   )
 }
@@ -76,7 +77,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <Layout>
+        <RouterProvider router={router} />
+      </Layout>
     </Provider>
   )
 }

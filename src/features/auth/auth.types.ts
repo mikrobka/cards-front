@@ -13,7 +13,11 @@ export type UserType = {
   __v: number
 }
 
-export type LoginArgs = Pick<UserType, "email" | "rememberMe"> & PasswordToPick
+export type LoginArgs = {
+  email: string
+  password: string
+  rememberMe?: boolean
+}
 export type AddedUser = Omit<UserType, "token | tokenDeathTime">
 
 export type RegisterArgs = Pick<UserType, "email" & PasswordToPick>
